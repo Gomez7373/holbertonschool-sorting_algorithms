@@ -15,7 +15,7 @@ size_t i, j;
 int temp;
 int swapped;
 
-temp = 0; 
+temp = 0;
 
 if (array == NULL || size < 2)
 return;
