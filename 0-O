@@ -1,8 +1,4 @@
-compare("cat 0-O", "2179/20174/0-O")
-[compare] Command to run:
-timeout 30 bash -c 'cat 0-O'
-[compare] Return code: 0
-[compare] Desired stdout:
-O(n)
-O(n^2)
-O(n^2)
+O(n)        /* Best Case*/
+O(n^2)      /* Average Case*/
+O(n^2)      /* Worst Case*/
+
