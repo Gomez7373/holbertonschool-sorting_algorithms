@@ -20,27 +20,27 @@ return;
 current = (*list)->next;
 while (current != NULL)
 {
-while (current->prev != NULL && current->n < current->prev->n)
+temp = current;
+while (temp->prev != NULL && temp->n < temp->prev->n)
 {
-temp = current->prev;
-/* Swapping nodes 'current' and 'temp' */
-current->prev = temp->prev;
-temp->next = current->next;
+/* Swap nodes */
+temp->prev->next = temp->next;
+if (temp->next != NULL)
+temp->next->prev = temp->prev;
 
-if (current->next != NULL)
-current->next->prev = temp;
+temp->next = temp->prev;
+temp->prev = temp->prev->prev;
+temp->next->prev = temp;
 
 if (temp->prev != NULL)
-temp->prev->next = current;
+temp->prev->next = temp;
 else
-*list = current;
+*list = temp;
 
-current->next = temp;
-temp->prev = current;
+if (temp->next->next != NULL)
+temp->next->next->prev = temp->next;
 
 print_list(*list);
-/* After swap, reposition 'current' */
-current = temp;
 }
 current = current->next;
 }
