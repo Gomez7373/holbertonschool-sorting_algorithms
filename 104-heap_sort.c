@@ -1,39 +1,4 @@
-#include <stdio.h>
 #include "sort.h"
-
-/**
-* heapify - Organizes the heap
-* @array: Array to sort
-* @size: Size of the array
-* @index: Index to start the heapify process
-*
-* Description: This function organizes the heap structure starting from a
-* given index.
-*/
-void heapify(int *array, size_t size, size_t index)
-{
-size_t largest = index;
-size_t left = 2 * index + 1;
-size_t right = 2 * index + 2;
-
-if (left < size && array[left] > array[largest])
-largest = left;
-
-if (right < size && array[right] > array[largest])
-largest = right;
-
-if (largest != index)
-{
-int temp = array[index];
-array[index] = array[largest];
-array[largest] = temp;
-
-printf("Swap: %d, %d\n", array[index], array[largest]);
-print_array(array, size);
-
-heapify(array, size, largest);
-}
-}
 
 /**
 * heap_sort - Sorts an array of integers in ascending order using Heap sort
@@ -51,7 +16,7 @@ return;
 int i;
 
 for (i = (int)(size / 2) - 1; i >= 0; i--)
-heapify(array, size, (size_t)i);
+
 
 for (i = (int)size - 1; i > 0; i--)
 {
@@ -61,5 +26,6 @@ array[i] = temp;
 
 printf("Swap: %d, %d\n", array[0], array[i]);
 print_array(array, size);
+
 }
 }
