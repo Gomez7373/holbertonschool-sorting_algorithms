@@ -12,6 +12,7 @@ void heapify(int *array, size_t size, size_t index, size_t total_size)
 size_t largest = index;
 size_t left = 2 * index + 1;
 size_t right = 2 * index + 2;
+int temp;
 
 if (left < size && array[left] > array[largest])
 largest = left;
@@ -21,7 +22,7 @@ largest = right;
 
 if (largest != index)
 {
-int temp = array[index];
+temp = array[index];
 array[index] = array[largest];
 array[largest] = temp;
 
@@ -38,15 +39,19 @@ heapify(array, size, largest, total_size);
 */
 void heap_sort(int *array, size_t size)
 {
+size_t i;
+int temp;
+
 if (array == NULL || size < 2)
 return;
 
-for (int i = size / 2 - 1; i >= 0; i--)
+for (i = size / 2 - 1; i < SIZE_MAX; i--)
+
 heapify(array, size, i, size);
 
-for (int i = size - 1; i > 0; i--)
+for (i = size - 1; i > 0; i--)
 {
-int temp = array[0];
+temp = array[0];
 array[0] = array[i];
 array[i] = temp;
 
@@ -55,3 +60,4 @@ print_array(array, size);
 heapify(array, i, 0, size);
 }
 }
+
